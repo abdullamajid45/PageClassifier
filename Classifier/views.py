@@ -14,7 +14,7 @@ from nltk.tokenize import word_tokenize
 from nltk import pos_tag
 from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
-
+from django.conf.urls.static import static
 Count_vect = joblib.load('vectorized_data.sav')
 classifier_svc = joblib.load('trained_model.sav')
 Encoder = joblib.load('encoded_label.sav')
@@ -25,7 +25,6 @@ def pdf_to_text(pdfname):
     rsrcmgr = PDFResourceManager()
     codec = 'utf-8'
     laparams = LAParams()
-
     # Extract text
     fp = open(pdfname, 'rb')
     no=1
@@ -45,7 +44,6 @@ def pdf_to_text(pdfname):
         tokenized = text.split()
         if len(tokenized) > 0 and tokenized[-1].isdigit() and len(tokenized[-1]) > 4:
             page_number = int(tokenized[-1])
-            print(page_number," --- ",i)
             if flag==False and (page_number ==1 or page_number ==2):
                 i=page_number
                 flag=True
