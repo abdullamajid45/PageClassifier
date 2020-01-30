@@ -10,12 +10,10 @@ import pandas as pd
 import joblib
 from collections import defaultdict
 from nltk.corpus import wordnet as wn
-
 from nltk.tokenize import word_tokenize
 from nltk import pos_tag
 from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
-
 
 Count_vect = joblib.load('vectorized_data.sav')
 classifier_svc = joblib.load('trained_model.sav')
@@ -23,6 +21,7 @@ Encoder = joblib.load('encoded_label.sav')
 
 def pdf_to_text(pdfname):
     # PDFMiner boilerplate
+
     rsrcmgr = PDFResourceManager()
     codec = 'utf-8'
     laparams = LAParams()
@@ -35,7 +34,6 @@ def pdf_to_text(pdfname):
     flag=False
     data = pd.DataFrame([], columns=['page', 'text'])
     for page in PDFPage.get_pages(fp):
-
         sio = StringIO()
         device = TextConverter(rsrcmgr, sio, codec=codec, laparams=laparams)
         interpreter = PDFPageInterpreter(rsrcmgr, device)
