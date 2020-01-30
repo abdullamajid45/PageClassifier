@@ -8,13 +8,14 @@ from io import StringIO
 import re
 import pandas as pd
 import joblib
+import nltk
 from collections import defaultdict
 from nltk.corpus import wordnet as wn
 from nltk.tokenize import word_tokenize
 from nltk import pos_tag
 from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
-
+nltk.download('all')
 Count_vect = joblib.load('vectorized_data.sav')
 classifier_svc = joblib.load('trained_model.sav')
 Encoder = joblib.load('encoded_label.sav')
