@@ -43,8 +43,9 @@
 {#              </tbody>#}
 {#            </table>#}
 {#        </div>#}
-
-
+        {% for item in data %}
+            <h2>{{item}}</h2>
+        {% endfor %}
 
     {% endif %}
     </div>
