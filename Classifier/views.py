@@ -69,11 +69,9 @@ def output(request):
         data = pdf_to_text(str(name))
         data['text'] = [entry.lower() for entry in data['text']]
         data['text'] = [word_tokenize(entry) for entry in data['text']]
-
+        result.append("Hello")
         tag_map = defaultdict(lambda: wn.NOUN)
-
-        for item in data["text"]:
-            result.append(item)
+        result.append("World")
 
         # tag_map['J'] = wn.ADJ
         # tag_map['V'] = wn.VERB
