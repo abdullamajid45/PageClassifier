@@ -79,6 +79,7 @@ def output(request):
         tag_map['V'] = wn.VERB
         tag_map['R'] = wn.ADV
 
+        result=["Hello"]
         for index, entry in enumerate(data['text']):
             # Declaring Empty List to store the words that follow the rules for this step
             Final_words = []
