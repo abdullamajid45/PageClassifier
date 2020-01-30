@@ -1,5 +1,4 @@
 stopwords
 wordnet
-word_tokenize
 WordNetLemmatizer
 defaultdict
