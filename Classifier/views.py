@@ -14,11 +14,9 @@ from nltk.tokenize import word_tokenize
 from nltk import pos_tag
 from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
-import nltk
 Count_vect = joblib.load('vectorized_data.sav')
 classifier_svc = joblib.load('trained_model.sav')
 Encoder = joblib.load('encoded_label.sav')
-nltk.download('stopwords')
 def pdf_to_text(pdfname):
     # PDFMiner boilerplate
 
@@ -73,7 +71,6 @@ def output(request):
 
         data['text'] = [entry.lower() for entry in data['text']]
         data['text'] = [word_tokenize(entry) for entry in data['text']]
-        print("Hello")
         tag_map = defaultdict(lambda: wn.NOUN)
         tag_map['J'] = wn.ADJ
         tag_map['V'] = wn.VERB
@@ -82,11 +79,12 @@ def output(request):
         result=["Hello"]
         print("Hello1")
 
-        for index, entry in data['text']:
+        for index, entry in enumerate(data['text']):
             # Declaring Empty List to store the words that follow the rules for this step
             Final_words = []
             # Initializing WordNetLemmatizer()
             word_Lemmatized = WordNetLemmatizer()
+            result.append("Hello-"+str(index))
             #pos_tag function below will provide the 'tag' i.e if the word is Noun(N) or Verb(V) or something else.
             for word, tag in pos_tag(entry):
                 # Below condition is to check for Stop words and consider only alphabets
@@ -101,22 +99,27 @@ def output(request):
 
             data['text'][index] = Final_words
         print("Hello3")
-
+        result.append("World")
         data["text"] = [" ".join(entry) for entry in data['text']]
         x = data["text"].copy()
+        result.append("World-1")
         train_x = Count_vect.transform(x)
         y_pred = []
         if train_x.shape[0] > 0:
+            result.append("World-2")
             y_pred = classifier_svc.predict(train_x)
         result = []
         for i in range(0, len(y_pred)):
             if y_pred[i] == 1:
+                result.append("World-4")
                 result.append(data["page"][i])
         print("Result=========== ", result)
 
     except Exception as e:
+        result.append("World-5")
+        result.append(e)
         print("Exception = ",e)
-        result=[]
+        #result=[]
     fs.delete(name)
     final = {"data": result}
     return render(request, 'index.html', final)
