@@ -110,8 +110,8 @@ def output(request):
                 result.append(data["page"][i])
         print("Result=========== ", result)
 
-    except:
-        print("")
+    except Exception as e:
+        result.append(str(e))
         #result=[]
     result.append("World-4")
     fs.delete(name)
