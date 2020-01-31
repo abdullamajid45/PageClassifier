@@ -65,7 +65,7 @@ def output(request):
     file = request.FILES["file"]
     fs = FileSystemStorage()
     name = fs.save(file.name, file)
-
+    result=[]
     try:
         data = pdf_to_text(str(name))
 
@@ -75,8 +75,7 @@ def output(request):
         tag_map['J'] = wn.ADJ
         tag_map['V'] = wn.VERB
         tag_map['R'] = wn.ADV
-
-        result=["Hello"]
+        result.append("Hello")
         print("Hello1")
 
         for index, entry in enumerate(data['text']):
