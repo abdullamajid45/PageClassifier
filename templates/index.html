@@ -19,31 +19,33 @@
 
     </form>
     {% if data %}
-        <h1 class="text-info justify-content-center text-center mt-5">List of Pages with Chart Notes</h1>
-        <div class="table-responsive text-nowrap">
-            <table class="table table-bordered table-hover mx-auto my-5 w-auto">
-              <thead>
-                <tr>
-                  <th scope="col th-sm">#</th>
-                  <th scope="col th-sm">Page #</th>
-                </tr>
-              </thead>
-              <tbody>
-                {% for item in data %}
-                    <tr class="{% if forloop.counter|divisibleby:2%}
-                            table-info
-                        {% endif %}"
-                    >
-                        <th scope="row">{{ forloop.counter }}</th>
-
-                        <td>Page: {{ item }}</td>
-                    </tr>
-                {% endfor %}
-
-              </tbody>
-            </table>
-        </div>
-
+{#        <h1 class="text-info justify-content-center text-center mt-5">List of Pages with Chart Notes</h1>#}
+{#        <div class="table-responsive text-nowrap">#}
+{#            <table class="table table-bordered table-hover mx-auto my-5 w-auto">#}
+{#              <thead>#}
+{#                <tr>#}
+{#                  <th scope="col th-sm">#</th>#}
+{#                  <th scope="col th-sm">Page #</th>#}
+{#                </tr>#}
+{#              </thead>#}
+{#              <tbody>#}
+{#                {% for item in data %}#}
+{#                    <tr class="{% if forloop.counter|divisibleby:2%}#}
+{#                            table-info#}
+{#                        {% endif %}"#}
+{#                    >#}
+{#                        <th scope="row">{{ forloop.counter }}</th>#}
+{##}
+{#                        <td>Page: {{ item }}</td>#}
+{#                    </tr>#}
+{#                {% endfor %}#}
+{##}
+{#              </tbody>#}
+{#            </table>#}
+{#        </div>#}
+        {% for item in data %}
+            <h2>{{item}}</h2>
+        {% endfor %}
 
     {% endif %}
     </div>
