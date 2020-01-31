@@ -107,7 +107,7 @@ def output(request):
                 result.append(data["page"][i])
         print("Result=========== ", result)
 
-    except Exception as e:
+    except:
         result=[]
     fs.delete(name)
     final = {"data": result}
