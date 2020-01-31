@@ -12,3 +12,13 @@ porter_test
 vader_lexicon
 treebank
 dependency_treebank
+chunker
+grammar
+misc
+sentiment
+taggers
+corpora
+help
+models
+stemmers
+tokenizer
