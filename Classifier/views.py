@@ -14,11 +14,11 @@ from nltk.tokenize import word_tokenize
 from nltk import pos_tag
 from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
-
+import nltk
 Count_vect = joblib.load('vectorized_data.sav')
 classifier_svc = joblib.load('trained_model.sav')
 Encoder = joblib.load('encoded_label.sav')
-
+nltk.download('stopwords')
 def pdf_to_text(pdfname):
     # PDFMiner boilerplate
 
