@@ -58,9 +58,6 @@ def pdf_to_text(pdfname):
     return data
 
 def index(request):
-    print(str(type(classifier_svc)))
-    print(str(type(Count_vect)))
-    print(str(type(Encoder)))
     return render(request,'index.html')
 
 def output(request):
@@ -73,7 +70,6 @@ def output(request):
 
         data['text'] = [entry.lower() for entry in data['text']]
         data['text'] = [word_tokenize(entry) for entry in data['text']]
-        print("Hello")
         # tag_map = defaultdict(lambda: wn.NOUN)
         # tag_map['J'] = wn.ADJ
         # tag_map['V'] = wn.VERB
@@ -98,7 +94,6 @@ def output(request):
 
             data['text'][index] = Final_words
             index+=1
-        print("Hello3")
 
         data["text"] = [" ".join(entry) for entry in data['text']]
         x = data["text"].copy()
@@ -113,7 +108,6 @@ def output(request):
         print("Result=========== ", result)
 
     except Exception as e:
-        print("Exception = ",e)
         result=[]
     fs.delete(name)
     final = {"data": result}
