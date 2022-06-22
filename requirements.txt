@@ -4,7 +4,7 @@ Django==3.0.2
 gunicorn==20.0.4
 joblib==0.14.1
 nltk==3.4.5
-numpy==1.18.1
+numpy==1.22.0
 pandas==0.25.3
 pdfminer.six==20200104
 pycryptodome==3.9.4
